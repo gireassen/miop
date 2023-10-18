@@ -1,5 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import pandas as pd
 
 '''
 Этот код выполняет две основные задачи:
@@ -46,3 +47,11 @@ plt.figure(figsize=(8, 6))
 nx.draw(G, pos, node_color=colors, with_labels=True, edge_color='gray')
 plt.title('Фракции Захариева клуба карате')
 plt.show()
+
+def create_adjacency_table(G):
+    adjacency_matrix = nx.adjacency_matrix(G)
+    adjacency_df = pd.DataFrame(adjacency_matrix.todense(), index=G.nodes(), columns=G.nodes())
+    return adjacency_df
+
+adjacency_df = create_adjacency_table(G)
+print(adjacency_df)
