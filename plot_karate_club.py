@@ -22,10 +22,8 @@ import pandas as pd
 Код использует `nx.spring_layout(G)` для автоматического определения позиций узлов во время визуализации,
 так что узлы с множеством связей будут более центрированы, а менее связанные узлы - периферийны.
 '''
-
 G = nx.karate_club_graph()
 
-# Рисуем граф Karate Club
 plt.figure(figsize=(8, 6))
 nx.draw(G, with_labels=True, node_color='lightblue', edge_color='gray')
 plt.title('Захариев клуб карате')
@@ -48,10 +46,20 @@ nx.draw(G, pos, node_color=colors, with_labels=True, edge_color='gray')
 plt.title('Фракции Захариева клуба карате')
 plt.show()
 
-def create_adjacency_table(G):
-    adjacency_matrix = nx.adjacency_matrix(G)
-    adjacency_df = pd.DataFrame(adjacency_matrix.todense(), index=G.nodes(), columns=G.nodes())
-    return adjacency_df
+# def create_interaction_table(G):
+#     adjacency_df = pd.DataFrame(0, index=G.nodes(), columns=G.nodes())
+#     for node in G.nodes():
+#         for neighbor in G.neighbors(node):
+#             adjacency_df.loc[node, neighbor] = 1
+#     return adjacency_df
 
-adjacency_df = create_adjacency_table(G)
-print(adjacency_df)
+# def df_to_dict(adjacency_df):
+#     result_dict = {}
+#     for column in adjacency_df:
+#         result_dict[f'Student{column}'] = adjacency_df[column].tolist()
+#     return result_dict
+
+# interaction_df = create_interaction_table(G)
+# output_dict = df_to_dict(interaction_df)
+# print(output_dict)
+
